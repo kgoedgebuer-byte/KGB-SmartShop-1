@@ -1,70 +1,38 @@
 <!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KGB SmartShop</title>
-    <link rel="manifest" href="manifest.json" />
-    <link rel="icon" href="icon-192.png" />
-    <meta name="theme-color" content="#2196f3" />
-    <style>
-      body {
-        font-family: system-ui, sans-serif;
-        background: #f0f6ff;
-        color: #222;
-        text-align: center;
-        padding: 2rem;
-      }
-      h1 {
-        color: #1565c0;
-      }
-      #installBtn {
-        display: none;
-        padding: 12px 20px;
-        font-size: 16px;
-        background: #1565c0;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        margin-top: 20px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>🛒 Welkom bij <strong>KGB SmartShop</strong></h1>
-    <p>De slimme boodschappenlijst die lokaal én offline werkt.</p>
-    <button id="installBtn">📲 Installeer App</button>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-    <script>
-      // Installeerknop logica
-      let deferredPrompt;
-      const installBtn = document.getElementById('installBtn');
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        installBtn.style.display = 'inline-block';
-      });
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-      installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          const choice = await deferredPrompt.userChoice;
-          if (choice.outcome === 'accepted') {
-            console.log('✅ App geïnstalleerd');
-          }
-          deferredPrompt = null;
-          installBtn.style.display = 'none';
-        }
-      });
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
 
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register('service-worker.js')
-          .then(() => console.log('✅ Service Worker actief'))
-          .catch((err) => console.error('❌ Fout bij service worker:', err));
-      }
-    </script>
-  </body>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="full_option_agenda">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>full_option_agenda</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
 </html>

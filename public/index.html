@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007BFF">
+  <title>KGB SmartShop</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding-top: 20vh;
+      background: #e9f3ff;
+      color: #333;
+    }
+    h1 { color: #007BFF; }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welkom bij <strong>KGB SmartShop</strong></h1>
+  <p>De slimme boodschappenlijst die lokaal én offline werkt 🛒</p>
+  <button id="installBtn" style="display:none;">📲 Installeer App</button>
+  <p style="margin-top:20px;font-size:13px;color:#555;">
+    Werkt offline — voeg toe aan startscherm om als app te gebruiken.
+  </p>
+  <script src="install.js"></script>
+</body>
+</html>

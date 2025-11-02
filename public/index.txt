@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KGB SmartShop</title>
+
+  <!-- Manifest koppeling -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Thema kleur voor PWA -->
+  <meta name="theme-color" content="#007bff">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      color: #333;
+    }
+    h1 {
+      color: #007bff;
+    }
+    p {
+      font-size: 18px;
+    }
+  </style>
+
+  <script>
+    // Service Worker registratie
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('✅ Service worker actief!'))
+          .catch(err => console.log('❌ Fout bij service worker:', err));
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Welkom bij KGB SmartShop!</h1>
+  <p>Deze app werkt offline en kan worden geïnstalleerd als PWA 🎉</p>
+
+  <!-- Installatieknop -->
+  <script src="install.js"></script>
+</body>
+</html>

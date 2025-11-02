@@ -1,41 +1,59 @@
-// ✅ KGB SmartShop install script (GitHub versie)
-// Laatste update: automatische PWA-installatie + versiecontrole
-
 let deferredPrompt;
-const installButton = document.getElementById('installBtn');
 
-// Controleer of service worker aanwezig is
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then(() => console.log('✅ Service worker geregistreerd'))
-    .catch(err => console.error('❌ Service worker fout:', err));
-}
-
-window.addEventListener('beforeinstallprompt', (e) => {
+window.addEventListener("beforeinstallprompt", e => {
   e.preventDefault();
   deferredPrompt = e;
-  console.log('📱 Installatieprompt klaar');
-  installButton.style.display = 'inline-block';
-});
 
-installButton.addEventListener('click', async () => {
-  if (deferredPrompt) {
+  const installBtn = document.createElement("button");
+  installBtn.textContent = "📲 Installeer KGB SmartShop";
+  installBtn.style.position = "fixed";
+  installBtn.style.bottom = "20px";
+  installBtn.style.right = "20px";
+  installBtn.style.zIndex = "1000";
+  installBtn.style.background = "#007bff";
+  installBtn.style.color = "white";
+  installBtn.style.padding = "10px 16px";
+  installBtn.style.border = "none";
+  installBtn.style.borderRadius = "8px";
+  installBtn.style.fontSize = "16px";
+  installBtn.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+  installBtn.style.cursor = "pointer";
+  document.body.appendChild(installBtn);
+
+  installBtn.addEventListener("click", async () => {
+    installBtn.disabled = true;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    console.log(`Gebruikerkeuze: ${outcome}`);
+    if (outcome === "accepted") {
+      console.log("✅ App geïnstalleerd");
+    } else {
+      console.log("❌ Installatie geannuleerd");
+    }
     deferredPrompt = null;
-    installButton.style.display = 'none';
-  }
+    installBtn.remove();
+  });
 });
 
-window.addEventListener('appinstalled', () => {
-  console.log('✅ App geïnstalleerd');
-  alert('KGB SmartShop is nu geïnstalleerd als app 🎉');
-  installButton.style.display = 'none';
-});
-
-// 🔄 Versiecheck (optioneel)
-fetch('manifest.json')
-  .then(res => res.json())
-  .then(data => console.log(`📦 Versie: ${data.version || '1.0.0'}`))
-  .catch(() => {});
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js").then(reg => {
+    reg.addEventListener("updatefound", () => {
+      const newWorker = reg.installing;
+      newWorker.addEventListener("statechange", () => {
+        if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+          const updateBanner = document.createElement("div");
+          updateBanner.textContent = "🔄 Nieuwe versie beschikbaar — klik om te vernieuwen";
+          updateBanner.style.position = "fixed";
+          updateBanner.style.bottom = "0";
+          updateBanner.style.left = "0";
+          updateBanner.style.width = "100%";
+          updateBanner.style.background = "#ffc107";
+          updateBanner.style.textAlign = "center";
+          updateBanner.style.padding = "10px";
+          updateBanner.style.cursor = "pointer";
+          document.body.appendChild(updateBanner);
+          updateBanner.onclick = () => window.location.reload();
+        }
+      });
+    });
+  });
+}

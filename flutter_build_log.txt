@@ -1,0 +1,258 @@
+[  +25 ms] executing: sysctl hw.optional.arm64
+[   +6 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[   +9 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[  +37 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +39 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[  +13 ms] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[   +2 ms] Changing current working directory to: /Users/kurtgoedgebuer
+[  +86 ms] Skipping pub get: version match.
+[ +373 ms] Found plugin tesseract_ocr at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/tesseract_ocr-0.5.0/
+[  +21 ms] Found plugin path_provider at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
+[  +18 ms] Found plugin path_provider_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[  +32 ms] Found plugin path_provider_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[  +16 ms] Found plugin path_provider_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.3/
+[   +3 ms] Found plugin path_provider_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_android-2.2.20/
+[  +45 ms] Found plugin speech_to_text at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/
+[  +21 ms] Found plugin speech_to_text_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text_windows-1.0.0+beta.8/
+[  +55 ms] Found plugin shared_preferences at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[   +9 ms] Found plugin shared_preferences_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[  +29 ms] Found plugin shared_preferences_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[   +3 ms] Found plugin shared_preferences_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[   +9 ms] Found plugin shared_preferences_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[  +21 ms] Found plugin shared_preferences_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.14/
+[  +41 ms] Found plugin image_picker at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker-1.2.0/
+[   +7 ms] Found plugin image_picker_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.2/
+[  +39 ms] Found plugin file_selector_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+4/
+[  +18 ms] Found plugin image_picker_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.2+1/
+[  +13 ms] Found plugin file_selector_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+5/
+[  +14 ms] Found plugin image_picker_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.2/
+[   +2 ms] Found plugin file_selector_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2/
+[   +9 ms] Found plugin image_picker_ios at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.13+1/
+[   +5 ms] Found plugin image_picker_for_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_for_web-3.1.0/
+[  +21 ms] Found plugin image_picker_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_android-0.8.13+5/
+[  +11 ms] Found plugin flutter_plugin_android_lifecycle at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.32/
+[  +14 ms] Found plugin flutter_local_notifications at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications-19.5.0/
+[  +14 ms] Found plugin flutter_local_notifications_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_windows-1.0.3/
+[  +19 ms] Found plugin flutter_local_notifications_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-6.0.0/
+[  +58 ms] Found plugin audioplayers at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers-6.5.1/
+[  +55 ms] Found plugin audioplayers_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_windows-4.2.1/
+[  +29 ms] Found plugin audioplayers_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_web-5.1.1/
+[   +1 ms] Found plugin audioplayers_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_linux-4.2.1/
+[   +1 ms] Found plugin audioplayers_darwin at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_darwin-6.3.0/
+[   +1 ms] Found plugin audioplayers_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/
+[  +74 ms] Found plugin tesseract_ocr at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/tesseract_ocr-0.5.0/
+[   +2 ms] Found plugin path_provider at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
+[   +1 ms] Found plugin path_provider_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +3 ms] Found plugin path_provider_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[   +1 ms] Found plugin path_provider_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.3/
+[   +1 ms] Found plugin path_provider_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_android-2.2.20/
+[   +2 ms] Found plugin speech_to_text at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/
+[   +1 ms] Found plugin speech_to_text_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text_windows-1.0.0+beta.8/
+[   +4 ms] Found plugin shared_preferences at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[   +1 ms] Found plugin shared_preferences_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[   +1 ms] Found plugin shared_preferences_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[   +1 ms] Found plugin shared_preferences_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[        ] Found plugin shared_preferences_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[        ] Found plugin shared_preferences_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.14/
+[   +3 ms] Found plugin image_picker at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker-1.2.0/
+[        ] Found plugin image_picker_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.2/
+[   +4 ms] Found plugin file_selector_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+4/
+[   +1 ms] Found plugin image_picker_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.2+1/
+[   +1 ms] Found plugin file_selector_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+5/
+[        ] Found plugin image_picker_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.2/
+[        ] Found plugin file_selector_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2/
+[        ] Found plugin image_picker_ios at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.13+1/
+[        ] Found plugin image_picker_for_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_for_web-3.1.0/
+[   +1 ms] Found plugin image_picker_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_android-0.8.13+5/
+[        ] Found plugin flutter_plugin_android_lifecycle at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.32/
+[        ] Found plugin flutter_local_notifications at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications-19.5.0/
+[   +1 ms] Found plugin flutter_local_notifications_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_windows-1.0.3/
+[   +3 ms] Found plugin flutter_local_notifications_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-6.0.0/
+[   +3 ms] Found plugin audioplayers at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers-6.5.1/
+[   +3 ms] Found plugin audioplayers_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_windows-4.2.1/
+[   +1 ms] Found plugin audioplayers_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_web-5.1.1/
+[        ] Found plugin audioplayers_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_linux-4.2.1/
+[        ] Found plugin audioplayers_darwin at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_darwin-6.3.0/
+[        ] Found plugin audioplayers_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/
+[  +52 ms] Skipping generating web_plugin_registrant.dart because it is up-to-date.
+[  +21 ms] Found plugin tesseract_ocr at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/tesseract_ocr-0.5.0/
+[   +1 ms] Found plugin path_provider at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
+[   +1 ms] Found plugin path_provider_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +2 ms] Found plugin path_provider_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[   +1 ms] Found plugin path_provider_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.3/
+[        ] Found plugin path_provider_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_android-2.2.20/
+[   +2 ms] Found plugin speech_to_text at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/
+[   +1 ms] Found plugin speech_to_text_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text_windows-1.0.0+beta.8/
+[   +2 ms] Found plugin shared_preferences at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[        ] Found plugin shared_preferences_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[   +2 ms] Found plugin shared_preferences_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[   +1 ms] Found plugin shared_preferences_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[        ] Found plugin shared_preferences_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[        ] Found plugin shared_preferences_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.14/
+[   +2 ms] Found plugin image_picker at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker-1.2.0/
+[        ] Found plugin image_picker_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.2/
+[   +3 ms] Found plugin file_selector_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+4/
+[   +1 ms] Found plugin image_picker_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.2+1/
+[        ] Found plugin file_selector_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+5/
+[        ] Found plugin image_picker_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.2/
+[   +1 ms] Found plugin file_selector_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2/
+[   +1 ms] Found plugin image_picker_ios at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.13+1/
+[   +1 ms] Found plugin image_picker_for_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_for_web-3.1.0/
+[   +1 ms] Found plugin image_picker_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_android-0.8.13+5/
+[        ] Found plugin flutter_plugin_android_lifecycle at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.32/
+[        ] Found plugin flutter_local_notifications at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications-19.5.0/
+[   +1 ms] Found plugin flutter_local_notifications_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_windows-1.0.3/
+[   +2 ms] Found plugin flutter_local_notifications_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-6.0.0/
+[   +2 ms] Found plugin audioplayers at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers-6.5.1/
+[   +3 ms] Found plugin audioplayers_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_windows-4.2.1/
+[   +1 ms] Found plugin audioplayers_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_web-5.1.1/
+[        ] Found plugin audioplayers_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_linux-4.2.1/
+[        ] Found plugin audioplayers_darwin at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_darwin-6.3.0/
+[        ] Found plugin audioplayers_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/
+[ +120 ms] Generating /Users/kurtgoedgebuer/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+[  +30 ms] Skipping generating GeneratedPluginRegistrant.java because it is up-to-date.
+[  +21 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +3 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +2 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +2 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +2 ms] Skipping generating GeneratedPluginRegistrant.h because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.m because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.swift because it is up-to-date.
+[  +22 ms] executing: sysctl hw.optional.arm64
+[   +5 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[        ] executing: xcrun xcodebuild -version
+[   +7 ms] Exit code 72 from: xcrun xcodebuild -version
+[        ] xcrun: error: unable to find utility "xcodebuild", not a developer tool or in PATH
+[  +20 ms] executing: xcrun xcodebuild -version
+[   +7 ms] Exit code 72 from: xcrun xcodebuild -version
+[        ] xcrun: error: unable to find utility "xcodebuild", not a developer tool or in PATH
+[  +60 ms] Found plugin tesseract_ocr at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/tesseract_ocr-0.5.0/
+[   +2 ms] Found plugin path_provider at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
+[   +1 ms] Found plugin path_provider_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +3 ms] Found plugin path_provider_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[   +4 ms] Found plugin path_provider_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.3/
+[   +1 ms] Found plugin path_provider_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/path_provider_android-2.2.20/
+[  +11 ms] Found plugin speech_to_text at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/
+[   +1 ms] Found plugin speech_to_text_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/speech_to_text_windows-1.0.0+beta.8/
+[   +4 ms] Found plugin shared_preferences at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[   +1 ms] Found plugin shared_preferences_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[   +2 ms] Found plugin shared_preferences_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[   +1 ms] Found plugin shared_preferences_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[   +1 ms] Found plugin shared_preferences_foundation at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[   +1 ms] Found plugin shared_preferences_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.14/
+[   +4 ms] Found plugin image_picker at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker-1.2.0/
+[        ] Found plugin image_picker_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.2/
+[   +4 ms] Found plugin file_selector_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+4/
+[   +1 ms] Found plugin image_picker_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.2+1/
+[   +1 ms] Found plugin file_selector_macos at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+5/
+[        ] Found plugin image_picker_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.2/
+[        ] Found plugin file_selector_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2/
+[   +1 ms] Found plugin image_picker_ios at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.13+1/
+[        ] Found plugin image_picker_for_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_for_web-3.1.0/
+[   +1 ms] Found plugin image_picker_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/image_picker_android-0.8.13+5/
+[        ] Found plugin flutter_plugin_android_lifecycle at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.32/
+[        ] Found plugin flutter_local_notifications at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications-19.5.0/
+[   +1 ms] Found plugin flutter_local_notifications_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_windows-1.0.3/
+[   +2 ms] Found plugin flutter_local_notifications_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-6.0.0/
+[   +3 ms] Found plugin audioplayers at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers-6.5.1/
+[   +4 ms] Found plugin audioplayers_windows at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_windows-4.2.1/
+[   +1 ms] Found plugin audioplayers_web at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_web-5.1.1/
+[        ] Found plugin audioplayers_linux at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_linux-4.2.1/
+[        ] Found plugin audioplayers_darwin at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_darwin-6.3.0/
+[        ] Found plugin audioplayers_android at /Users/kurtgoedgebuer/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/
+[   +1 ms] generated_plugin_registrant.dart not found. Skipping.
+[   +1 ms] Compiling lib/main.dart for the Web...
+[   +6 ms] Initializing file store
+[   +4 ms] Done initializing file store
+[ +149 ms] Skipping target: web_entrypoint
+[   +2 ms] invalidated build due to missing files: /Users/kurtgoedgebuer/web/*/index.html, /Users/kurtgoedgebuer/web/flutter_bootstrap.js
+[   +1 ms] Skipping target: gen_localizations
+[   +1 ms] web_templated_files: Starting due to {InvalidatedReasonKind.outputMissing: The following outputs were missing: /Users/kurtgoedgebuer/build/web/*/index.html, InvalidatedReasonKind.inputMissing: The following inputs were missing: /Users/kurtgoedgebuer/web/*/index.html,/Users/kurtgoedgebuer/web/flutter_bootstrap.js}
+[   +1 ms] web_static_assets: Starting due to {InvalidatedReasonKind.outputMissing: The following outputs were missing: /Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/flutter.js,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/skwasm.js,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/skwasm_heavy.js,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/skwasm.js.symbols,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/canvaskit.js.symbols,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/skwasm_heavy.js.symbols,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/skwasm.wasm,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/chromium/canvaskit.js.symbols,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/chromium/canvaskit.js,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/chromium/canvaskit.wasm,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/canvaskit.js,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/canvaskit.wasm,/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/canvaskit/skwasm_heavy.wasm}
+[+6180 ms] Skipping target: dart2js
+[   +4 ms] web_static_assets: Complete
+[   +3 ms] dart2wasm: Starting due to {}
+[  +11 ms] executing: /Users/kurtgoedgebuer/flutter/bin/cache/dart-sdk/bin/dart compile wasm --packages=/Users/kurtgoedgebuer/.dart_tool/package_config.json --extra-compiler-option=--platform=/Users/kurtgoedgebuer/flutter/bin/cache/flutter_web_sdk/kernel/dart2wasm_platform.dill -Ddart.vm.profile=false -Ddart.vm.product=true --extra-compiler-option=--delete-tostring-package-uri=dart:ui --extra-compiler-option=--delete-tostring-package-uri=package:flutter --extra-compiler-option=--import-shared-memory --extra-compiler-option=--shared-memory-max-pages=32768 -DFLUTTER_VERSION=3.35.7 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=adc9010625 -DFLUTTER_ENGINE_REVISION=035316565a -DFLUTTER_DART_VERSION=3.9.2 -DFLUTTER_WEB_USE_SKIA=false -DFLUTTER_WEB_USE_SKWASM=true -DFLUTTER_WEB_CANVASKIT_URL=https://www.gstatic.com/flutter-canvaskit/035316565ad77281a75305515e4682e6c4c6f7ca/ --extra-compiler-option=--depfile=/Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/dart2wasm.d -O2 --strip-wasm --no-source-maps --minify --extra-compiler-option=--dry-run -o /Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/main.dart.wasm /Users/kurtgoedgebuer/.dart_tool/flutter_build/353df95deb556fb95b68a270818cfbad/main.dart
+[  +54 ms] web_templated_files: Complete
+[   +2 ms] dart2wasm: Complete
+[+1293 ms] Skipping target: web_release_bundle
+[ +316 ms] web_service_worker: Starting due to {InvalidatedReasonKind.inputChanged: The following inputs have updated contents: /Users/kurtgoedgebuer/build/web/flutter_bootstrap.js}
+[ +435 ms] web_service_worker: Complete
+[   +2 ms] Persisting file store
+[  +24 ms] Done persisting file store
+[  +52 ms] Compiling lib/main.dart for the Web... (completed in 19,1s)
+[   +3 ms] ✓ Built build/web
+[   +4 ms] "flutter web" took 20.983ms.
+[  +23 ms] executing: sw_vers -productName
+[  +83 ms] Exit code 0 from: sw_vers -productName
+[        ] macOS
+[        ] executing: sw_vers -productVersion
+[  +14 ms] Exit code 0 from: sw_vers -productVersion
+[        ] 12.7.6
+[        ] executing: sw_vers -buildVersion
+[  +13 ms] Exit code 0 from: sw_vers -buildVersion
+[        ] 21H1320
+[        ] executing: uname -m
+[   +5 ms] Exit code 0 from: uname -m
+[        ] x86_64
+[  +17 ms] Running 1 shutdown hook
+[   +2 ms] Shutdown hooks complete
+[  +91 ms] exiting with code 0

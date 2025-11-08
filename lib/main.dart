@@ -135,7 +135,7 @@ class _SmartShopHomeState extends State<SmartShopHome> {
     });
   }
 
-  void _changeBackgroundColor() async {
+  void _changeBackgroundColor() {
     setState(() {
       _backgroundColor = _randomPastel();
       _saveData();
@@ -252,3 +252,4 @@ class _SmartShopHomeState extends State<SmartShopHome> {
     );
   }
 }
+

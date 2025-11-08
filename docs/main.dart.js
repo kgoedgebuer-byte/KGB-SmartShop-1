@@ -78401,7 +78401,7 @@ return A.P($async$uJ,r)}}
 A.ahr.prototype={
 $2(a,b){var s,r=null,q=this.a,p=q.d,o=p.b,n=t.LN,m=A.nw(o,n),l=A.X(m).i("aq<1>"),k=A.a3(new A.aq(m,new A.ahk(q),l),l.i("w.E"))
 B.b.fB(k,new A.ahl())
-m=A.eD("KGB SmartShop \u2022 20251108151253",r,r,r,r,r,r)
+m=A.eD("KGB SmartShop \u2022 20251108151849",r,r,r,r,r,r)
 l=A.w3(r,r,B.DB,r,r,A.nw(o,n).length===0?r:new A.ahm(q),r,r,"Alles afvinken")
 o=t.E
 l=A.c([l,A.w3(r,r,B.Dz,r,r,p.gQq()===0?r:p.gacQ(),r,r,"Gekocht verwijderen"),A.w3(r,r,B.Dw,r,r,new A.ahn(q,a),r,r,"Kopieer lijst (JSON)")],o)

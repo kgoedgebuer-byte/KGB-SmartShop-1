@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="smartshoplist_v140"
+        android:label="smartshoplist_v150"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

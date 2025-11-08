@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,8 +14,8 @@ class KGBSmartShop extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'KGB SmartShop',
       theme: ThemeData(
+        primarySwatch: Colors.blue,
         useMaterial3: true,
-        colorSchemeSeed: Colors.blue,
       ),
       home: const ShopListPage(),
     );
@@ -32,108 +31,43 @@ class ShopListPage extends StatefulWidget {
 
 class _ShopListPageState extends State<ShopListPage> {
   final TextEditingController _controller = TextEditingController();
-
-  // lijst van winkel-namen
   final List<String> _shops = [];
-
-  // huidige achtergrondkleur
   Color selectedColor = Colors.white;
-
-  // per winkel een kleur
   final Map<String, Color> shopColors = {};
-
-  // keys voor opslag
-  static const _kShopsKey = 'shops_v1';
-  static const _kShopColorsKey = 'shop_colors_v1';
-  static const _kSelectedColorKey = 'selected_color_v1';
 
   @override
   void initState() {
     super.initState();
-    _loadAll();
+    _loadShops();
   }
 
-  Future<void> _loadAll() async {
+  Future<void> _loadShops() async {
     final prefs = await SharedPreferences.getInstance();
-
-    // namen
-    final items = prefs.getStringList(_kShopsKey) ?? [];
-    _shops.addAll(items);
-
-    // kleuren per winkel
-    final colorsJson = prefs.getString(_kShopColorsKey);
-    if (colorsJson != null && colorsJson.isNotEmpty) {
-      final decoded = (jsonDecode(colorsJson) as Map).cast<String, dynamic>();
-      decoded.forEach((name, argb) {
-        shopColors[name] = Color(argb as int);
-      });
-    }
-
-    // algemene achtergrond
-    final bgInt = prefs.getInt(_kSelectedColorKey);
-    if (bgInt != null) {
-      selectedColor = Color(bgInt);
-    }
-
-    setState(() {});
+    final items = prefs.getStringList('shops') ?? [];
+    setState(() => _shops.addAll(items));
   }
 
-  Future<void> _saveAll() async {
+  Future<void> _saveShops() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(_kShopsKey, _shops);
-
-    // kleuren mappen naar int
-    final map = <String, int>{};
-    shopColors.forEach((name, color) {
-      map[name] = color.value;
-    });
-    await prefs.setString(_kShopColorsKey, jsonEncode(map));
-
-    await prefs.setInt(_kSelectedColorKey, selectedColor.value);
+    await prefs.setStringList('shops', _shops);
   }
 
   void _addShop() {
-    final name = _controller.text.trim();
-    if (name.isEmpty) return;
-    if (_shops.contains(name)) return;
+    if (_controller.text.trim().isEmpty) return;
     setState(() {
-      _shops.add(name);
-      // nieuwe winkel krijgt meteen de huidige kleur
-      shopColors[name] = selectedColor;
+      _shops.add(_controller.text.trim());
+      shopColors[_controller.text.trim()] = selectedColor;
       _controller.clear();
+      _saveShops();
     });
-    _saveAll();
   }
 
   void _removeShop(String name) {
     setState(() {
       _shops.remove(name);
       shopColors.remove(name);
+      _saveShops();
     });
-    _saveAll();
-  }
-
-  Future<void> _pickBackgroundColor() async {
-    final color = await showDialog<Color>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Kies een achtergrondkleur"),
-        content: SingleChildScrollView(
-          child: BlockPicker(
-            pickerColor: selectedColor,
-            onColorChanged: (c) {
-              Navigator.pop(context, c);
-            },
-          ),
-        ),
-      ),
-    );
-    if (color != null) {
-      setState(() {
-        selectedColor = color;
-      });
-      _saveAll();
-    }
   }
 
   @override
@@ -141,11 +75,31 @@ class _ShopListPageState extends State<ShopListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('🛒 KGB SmartShop'),
+        backgroundColor: Colors.blue.shade700,
         actions: [
           IconButton(
             icon: const Icon(Icons.color_lens_outlined),
-            onPressed: _pickBackgroundColor,
-            tooltip: 'Achtergrondkleur',
+            onPressed: () async {
+              final color = await showDialog<Color>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text("Kies een achtergrondkleur"),
+                  content: SingleChildScrollView(
+                    child: BlockPicker(
+                      pickerColor: selectedColor,
+                      onColorChanged: (c) => selectedColor = c,
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, selectedColor),
+                      child: const Text("OK"),
+                    ),
+                  ],
+                ),
+              );
+              if (color != null) setState(() => selectedColor = color);
+            },
           ),
         ],
       ),
@@ -188,29 +142,6 @@ class _ShopListPageState extends State<ShopListPage> {
                       icon: const Icon(Icons.delete_outline),
                       onPressed: () => _removeShop(name),
                     ),
-                    onTap: () async {
-                      // kleur van deze winkel apart kiezen
-                      final c = await showDialog<Color>(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text('Kleur voor "$name"'),
-                          content: SingleChildScrollView(
-                            child: BlockPicker(
-                              pickerColor: color,
-                              onColorChanged: (cc) {
-                                Navigator.pop(context, cc);
-                              },
-                            ),
-                          ),
-                        ),
-                      );
-                      if (c != null) {
-                        setState(() {
-                          shopColors[name] = c;
-                        });
-                        _saveAll();
-                      }
-                    },
                   ),
                 );
               },
@@ -222,7 +153,6 @@ class _ShopListPageState extends State<ShopListPage> {
   }
 }
 
-/// eenvoudige kleurkiezer
 class BlockPicker extends StatelessWidget {
   final Color pickerColor;
   final ValueChanged<Color> onColorChanged;
@@ -252,20 +182,18 @@ class BlockPicker extends StatelessWidget {
 
     return Wrap(
       spacing: 8,
-      runSpacing: 8,
       children: colors.map((c) {
-        final selected = c.value == pickerColor.value;
         return GestureDetector(
           onTap: () => onColorChanged(c),
           child: Container(
-            width: 32,
-            height: 32,
+            width: 30,
+            height: 30,
             decoration: BoxDecoration(
               color: c,
               shape: BoxShape.circle,
               border: Border.all(
                 width: 2,
-                color: selected ? Colors.black : Colors.transparent,
+                color: c == pickerColor ? Colors.black : Colors.transparent,
               ),
             ),
           ),
@@ -274,3 +202,4 @@ class BlockPicker extends StatelessWidget {
     );
   }
 }
+

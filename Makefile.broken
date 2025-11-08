@@ -1,0 +1,30 @@
+SHELL := /bin/bash
+
+.PHONY: publish publish-pwa url open share
+
+publish:
+	@bash tools/deploy_versioned.sh
+
+publish-pwa:
+	@PWA=1 bash tools/deploy_versioned.sh
+
+url:
+	@remote=$$(git remote get-url origin); \
+	python3 - "$$remote" <<'PYSUB'
+import sys,urllib.parse
+u=sys.argv[1].strip()
+if u.startswith('git@'): o,r=u.split(':',1)[1].split('/',1)
+else:
+    p=urllib.parse.urlparse(u); o,r=p.path.lstrip('/').split('/',1)
+if r.endswith('.git'): r=r[:-4]
+print(f"https://{o}.github.io/" if r==f"{o}.github.io" else f"https://{o}.github.io/{r}/")
+PYSUB
+
+open: url
+	@u="$$(make -s url)"; \
+	open -a "Safari" "$$u?ts=$$(date +%s)" 2>/dev/null || true; \
+	open -a "Google Chrome" "$$u?ts=$$(date +%s)" 2>/dev/null || true; \
+	echo "Geopend: $$u"
+
+share: url
+	@u="$$(make -s url)"; echo "$$u" | pbcopy 2>/dev/null || true; echo "Link gekopieerd: $$u"

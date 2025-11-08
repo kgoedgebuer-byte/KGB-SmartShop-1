@@ -1,0 +1,77 @@
+name: Versioned Flutter Web to main/docs
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Compute repo info + version
+        id: meta
+        shell: bash
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          VERSION="v$(date +%Y%m%d%H%M%S)"
+          if [[ "$REPO" == "${OWNER}.github.io" ]]; then
+            echo "href=/${VERSION}/" >> $GITHUB_OUTPUT
+            echo "root=https://${OWNER}.github.io/" >> $GITHUB_OUTPUT
+          else
+            echo "href=/${REPO}/${VERSION}/" >> $GITHUB_OUTPUT
+            echo "root=https://${OWNER}.github.io/${REPO}/" >> $GITHUB_OUTPUT
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+      - run: flutter pub get
+      - run: flutter build web --release --base-href "${{ steps.meta.outputs.href }}"
+
+      - name: Disable SW + cache-bust + strip manifest
+        run: |
+          python3 - <<'PY'
+import os,re,time
+p="build/web/index.html"; s=open(p,"r",encoding="utf-8").read()
+s=re.sub(r'(serviceWorkerVersion\s*:\s*)["\'][^"\']*["\']', r'\1null', s, flags=re.I)
+s=re.sub(r'(const\s+serviceWorkerVersion\s*=\s*)["\'][^"\']*["\']\s*;', r'\1null;', s, flags=re.I)
+s=re.sub(r'\s*<link[^>]*rel=["\']manifest["\'][^>]*>\s*','',s,flags=re.I)
+ts=str(int(time.time()))
+s=s.replace('src="flutter.js"', f'src="flutter.js?v={ts}"')
+s=s.replace('src="flutter_bootstrap.js"', f'src="flutter_bootstrap.js?v={ts}"')
+extra="<script>(function(){try{if('serviceWorker'in navigator){navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){try{r.unregister()}catch(e){}})})}if(window.caches&&caches.keys){caches.keys().then(function(k){k.forEach(function(x){caches.delete(x)})})}}catch(e){}})();</script>"
+s=re.sub(r"</body>", extra+"</body>", s, flags=re.I)
+open(p,"w",encoding="utf-8").write(s)
+for fn in ("build/web/flutter_service_worker.js","build/web/firebase-messaging-sw.js"):
+    try: os.remove(fn)
+    except: pass
+PY
+
+      - name: Copy into docs/<VERSION> and redirect root
+        run: |
+          VERSION="${{ steps.meta.outputs.version }}"
+          mkdir -p "docs/${VERSION}"
+          rsync -a --delete "build/web/" "docs/${VERSION}/"
+          echo "${VERSION}" > docs/version.txt
+          printf '%s\n' '<!doctype html><meta http-equiv="refresh" content="0; url=./'${VERSION}'/"><meta name="robots" content="noindex"><title>Redirect</title><a href="./'${VERSION}'/">Doorgaan…</a>' > docs/index.html
+
+      - name: Commit back to main (skip CI)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "[skip ci] docs: ${{ steps.meta.outputs.version }}" || echo "niets te committen"
+          git push

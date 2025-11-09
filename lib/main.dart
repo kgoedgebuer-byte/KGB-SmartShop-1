@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const KGBSmartShopApp());
 }
 
@@ -15,7 +19,7 @@ class KGBSmartShopApp extends StatelessWidget {
       title: 'KGB SmartShop',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF8FAFC),
+        scaffoldBackgroundColor: const Color(0xFFF7F9FB),
         useMaterial3: true,
       ),
       home: const SmartShopHome(),
@@ -33,10 +37,10 @@ class SmartShopHome extends StatefulWidget {
 class _SmartShopHomeState extends State<SmartShopHome> {
   final TextEditingController _controller = TextEditingController();
   final List<String> _shops = [];
-  final Map<String, Color> _shopCardColors = {};
-  final Map<String, Color> _shopBorderColors = {};
+  final Map<String, Color> _shopColors = {};
+  final Map<String, Color> _shopBorders = {};
 
-  Color _backgroundColor = const Color(0xFFF8FAFC);
+  Color _backgroundColor = const Color(0xFFF7F9FB);
 
   final List<Color> _pastelColors = [
     const Color(0xFFFFC1CC),
@@ -87,26 +91,61 @@ class _SmartShopHomeState extends State<SmartShopHome> {
     _loadData();
   }
 
+  // 🔄 Laden van lokale data + Firestore sync
   Future<void> _loadData() async {
     final prefs = await SharedPreferences.getInstance();
-    final savedShops = prefs.getStringList('shops') ??
-        ['Delhaize', 'Lidl', 'Colruyt', 'Aldi', 'Action', 'Kruidvat', 'Zeeman'];
-    final bgValue = prefs.getInt('backgroundColor');
+    final saved = prefs.getStringList('shops');
+    final bg = prefs.getInt('bg');
+
+    if (saved == null || saved.isEmpty) {
+      _shops.addAll(['Delhaize', 'Colruyt', 'Lidl', 'Aldi', 'Action', 'Zeeman', 'Kruidvat']);
+    } else {
+      _shops.addAll(saved);
+    }
+    if (bg != null) _backgroundColor = Color(bg);
+
+    // 🔥 Probeer online data te laden (Firestore)
+    try {
+      final firestore = FirebaseFirestore.instance.collection('smartshop_users');
+      final doc = await firestore.doc('kurt').get();
+      if (doc.exists) {
+        final data = doc.data()!;
+        final cloudShops = List<String>.from(data['shops'] ?? []);
+        final cloudBg = data['bg'];
+        if (cloudShops.isNotEmpty) {
+          _shops
+            ..clear()
+            ..addAll(cloudShops);
+        }
+        if (cloudBg != null) _backgroundColor = Color(cloudBg);
+      }
+    } catch (e) {
+      debugPrint('⚠️ Firestore niet bereikbaar, lokale data gebruikt: $e');
+    }
 
     setState(() {
-      _shops.addAll(savedShops);
-      _backgroundColor = bgValue != null ? Color(bgValue) : _backgroundColor;
-      for (var shop in _shops) {
-        _shopCardColors[shop] = _randomPastel();
-        _shopBorderColors[shop] = _randomPastel();
+      for (var s in _shops) {
+        _shopColors[s] = _randomPastel();
+        _shopBorders[s] = _randomPastel();
       }
     });
   }
 
+  // 🔐 Opslaan lokaal + Firestore
   Future<void> _saveData() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList('shops', _shops);
-    await prefs.setInt('backgroundColor', _backgroundColor.value);
+    await prefs.setInt('bg', _backgroundColor.value);
+
+    try {
+      final firestore = FirebaseFirestore.instance.collection('smartshop_users');
+      await firestore.doc('kurt').set({
+        'shops': _shops,
+        'bg': _backgroundColor.value,
+      });
+    } catch (e) {
+      debugPrint('⚠️ Kon Firestore niet updaten: $e');
+    }
   }
 
   Color _randomPastel() {
@@ -115,37 +154,37 @@ class _SmartShopHomeState extends State<SmartShopHome> {
   }
 
   void _addShop() {
-    final name = _controller.text.trim();
-    if (name.isEmpty) return;
+    final text = _controller.text.trim();
+    if (text.isEmpty) return;
     setState(() {
-      _shops.add(name);
-      _shopCardColors[name] = _randomPastel();
-      _shopBorderColors[name] = _randomPastel();
+      _shops.add(text);
+      _shopColors[text] = _randomPastel();
+      _shopBorders[text] = _randomPastel();
       _controller.clear();
       _saveData();
     });
   }
 
-  void _removeShop(String name) {
+  void _deleteShop(String name) {
     setState(() {
       _shops.remove(name);
-      _shopCardColors.remove(name);
-      _shopBorderColors.remove(name);
+      _shopColors.remove(name);
+      _shopBorders.remove(name);
       _saveData();
     });
   }
 
-  void _changeBackgroundColor() {
+  void _changeBackground() {
     setState(() {
       _backgroundColor = _randomPastel();
       _saveData();
     });
   }
 
-  void _changeBorderColors() {
+  void _changeBorders() {
     setState(() {
-      for (var shop in _shops) {
-        _shopBorderColors[shop] = _randomPastel();
+      for (var s in _shops) {
+        _shopBorders[s] = _randomPastel();
       }
       _saveData();
     });
@@ -156,38 +195,35 @@ class _SmartShopHomeState extends State<SmartShopHome> {
     return Scaffold(
       backgroundColor: _backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade600,
+        backgroundColor: Colors.blueAccent,
         title: const Text(
-          "🛒 KGB SmartShop",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          '🛒 KGB SmartShop',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
+            onPressed: _changeBackground,
             icon: const Icon(Icons.format_color_fill, color: Colors.white),
-            tooltip: "Wijzig achtergrondkleur",
-            onPressed: _changeBackgroundColor,
+            tooltip: 'Wijzig achtergrondkleur',
           ),
           IconButton(
+            onPressed: _changeBorders,
             icon: const Icon(Icons.color_lens_outlined, color: Colors.white),
-            tooltip: "Wijzig randen",
-            onPressed: _changeBorderColors,
+            tooltip: 'Wijzig randen',
           ),
         ],
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(10),
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
                     controller: _controller,
                     decoration: const InputDecoration(
-                      hintText: "Winkel toevoegen...",
+                      hintText: 'Winkel toevoegen...',
                       border: OutlineInputBorder(),
                       filled: true,
                       fillColor: Colors.white,
@@ -198,55 +234,40 @@ class _SmartShopHomeState extends State<SmartShopHome> {
                 const SizedBox(width: 10),
                 FloatingActionButton.small(
                   onPressed: _addShop,
-                  backgroundColor: Colors.blue.shade600,
+                  backgroundColor: Colors.blueAccent,
                   child: const Icon(Icons.add, color: Colors.white),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: _shops.isEmpty
-                ? const Center(
-                    child: Text(
-                      "Nog geen winkels toegevoegd 🛍️",
-                      style: TextStyle(fontSize: 16, color: Colors.black54),
-                    ),
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    itemCount: _shops.length,
-                    itemBuilder: (context, index) {
-                      final shop = _shops[index];
-                      final cardColor =
-                          _shopCardColors[shop] ?? _randomPastel();
-                      final borderColor =
-                          _shopBorderColors[shop] ?? _randomPastel();
-                      return Card(
-                        elevation: 4,
-                        color: cardColor,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: borderColor, width: 2.5),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        margin: const EdgeInsets.symmetric(vertical: 6),
-                        child: ListTile(
-                          title: Text(
-                            shop,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete_outline),
-                            color: Colors.black54,
-                            onPressed: () => _removeShop(shop),
-                          ),
-                        ),
-                      );
-                    },
+            child: ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: _shops.length,
+              itemBuilder: (context, i) {
+                final shop = _shops[i];
+                return Card(
+                  color: _shopColors[shop] ?? _randomPastel(),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        color: _shopBorders[shop] ?? _randomPastel(),
+                        width: 3),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-          ),
+                  child: ListTile(
+                    title: Text(shop,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87)),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete_outline),
+                      onPressed: () => _deleteShop(shop),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )
         ],
       ),
     );

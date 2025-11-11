@@ -3,17 +3,22 @@ import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyB-V8V7Op_lm2c65103uSZYV6_hpcDA",
-      authDomain: "kgb-smartshop-4e510.firebaseapp.com",
-      projectId: "kgb-smartshop-4e510",
-      storageBucket: "kgb-smartshop-4e510.appspot.com",
-      messagingSenderId: "590654234631",
-      appId: "1:590654234631:web:6be75396bb4898893a9f22",
-    ),
-  );
-  runApp(const SmartShopApp());
+
+  try {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyB-V8V7Op_lm2c65103uSZYV6_hpcDA",
+        authDomain: "kgb-smartshop-4e510.firebaseapp.com",
+        projectId: "kgb-smartshop-4e510",
+        storageBucket: "kgb-smartshop-4e510.appspot.com",
+        messagingSenderId: "590654234631",
+        appId: "1:590654234631:web:6be75396bb4898893a9f22",
+      ),
+    );
+    runApp(const SmartShopApp());
+  } catch (e) {
+    runApp(ErrorApp(error: e.toString()));
+  }
 }
 
 class SmartShopApp extends StatelessWidget {
@@ -41,7 +46,6 @@ class SmartShopDashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('SmartShop Dashboard'),
-        centerTitle: true,
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
       ),
@@ -51,80 +55,59 @@ class SmartShopDashboard extends StatelessWidget {
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
         children: [
-          _buildCard(
-            icon: Icons.shopping_cart,
-            title: "Verkoop starten",
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Verkoopmodule komt 
-binnenkort")),
-              );
-            },
-          ),
-          _buildCard(
-            icon: Icons.inventory,
-            title: "Voorraad beheren",
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Voorraadbeheer wordt 
-geladen...")),
-              );
-            },
-          ),
-          _buildCard(
-            icon: Icons.bar_chart,
-            title: "Rapporten bekijken",
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Rapporten volgen later")),
-              );
-            },
-          ),
-          _buildCard(
-            icon: Icons.settings,
-            title: "Instellingen",
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Instellingen worden 
-voorbereid")),
-              );
-            },
-          ),
-          _buildCard(
-            icon: Icons.person,
-            title: "Gebruikers & login",
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Login-module binnenkort 
-online")),
-              );
-            },
-          ),
+          _buildCard(Icons.shopping_cart, "Verkoop starten"),
+          _buildCard(Icons.inventory, "Voorraad beheren"),
+          _buildCard(Icons.bar_chart, "Rapporten bekijken"),
+          _buildCard(Icons.settings, "Instellingen"),
+          _buildCard(Icons.person, "Gebruikers & login"),
         ],
       ),
     );
   }
 
-  Widget _buildCard({
-    required IconData icon,
-    required String title,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: 
+  Widget _buildCard(IconData icon, String title) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: 
 BorderRadius.circular(16)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: () {
+          debugPrint("$title ingedrukt");
+        },
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(icon, size: 50, color: Colors.green),
               const SizedBox(height: 12),
-              Text(title, style: const TextStyle(fontSize: 18, fontWeight: 
-FontWeight.bold)),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 18, fontWeight: 
+FontWeight.bold),
+              ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ErrorApp extends StatelessWidget {
+  final String error;
+  const ErrorApp({super.key, required this.error});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red.shade50,
+        body: Center(
+          child: Text(
+            '🔥 Fout bij opstart:\n$error',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.red, fontSize: 18),
           ),
         ),
       ),

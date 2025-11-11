@@ -1,47 +1,25 @@
 #!/bin/bash
-set -e
+echo "🚀 Automatische SmartShop Deploy gestart..."
 
-# Controle: juiste main.dart?
-if ! grep -q "SmartShopHome" lib/main.dart; then
-  echo "❌ lib/main.dart is NIET de juiste versie (met SmartShopHome). 
-Eerst plakken!"
-  exit 1
-fi
+# Zorg dat we altijd in de juiste map staan
+cd ~/Desktop/Oud_SmartShop/smartshoplist_v150 || exit
+echo "📂 Map gecontroleerd: $(pwd)"
 
-echo "✅ main.dart correct gevonden."
-
-# Schoonmaken + dependencies
+# Opschonen en opnieuw builden
 flutter clean
 flutter pub get
+flutter build web --release
 
-# Webbuild met juiste pad
-flutter build web --release --base-href "/KGB-SmartShop-1/"
-
-# Oude docs vervangen door nieuwe build
+# Zet build-bestanden klaar voor GitHub Pages
 rm -rf docs
 mkdir docs
 cp -R build/web/* docs/
 
-# 404 -> index.html zodat Safari niet wit blijft
-cat > docs/404.html <<EOF
-<!doctype html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=index.html">
-  </head>
-  <body></body>
-</html>
-EOF
-
-# Commit & push
+# Commit en push naar GitHub
 git add .
-git commit -m "Auto-deploy nieuwste SmartShop build" || echo "⚠️ Niks te 
-committen"
-git push origin main --force
+git commit -m "🔄 Automatische SmartShop web build $(date)"
+git push origin main
 
-# Open beide browsers (met verse cache)
-open -a "Google Chrome" 
-"https://kgoedgebuer-byte.github.io/KGB-SmartShop-1/?v=$(date +%s)"
-open -a "Safari" 
-"https://kgoedgebuer-byte.github.io/KGB-SmartShop-1/?v=$(date +%s)"
+echo "✅ Deploy voltooid! Controleer op:"
+echo "👉 https://kgoedgebuer-byte.github.io/KGB-SmartShop-1/"
 

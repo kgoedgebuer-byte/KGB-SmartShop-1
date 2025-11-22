@@ -1,0 +1,22 @@
+{
+  "name": "SmartShopList",
+  "short_name": "ShopList",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#EAFEEA",
+  "theme_color": "#66CCFF",
+  "description": "SmartShopList Offline PWA",
+  "icons": [
+    {
+      "src": "icons/icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+

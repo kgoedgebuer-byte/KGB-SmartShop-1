@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="./">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="SmartShopList PWA">
+
+  <!-- PWA META -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SmartShopList">
+
+  <!-- FIX ANDROID UI TOO SMALL -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, 
+maximum-scale=1.0, user-scalable=no">
+
+  <title>SmartShopList</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // FLUTTER BOOTSTRAP – origineel van jouw build
+    window.addEventListener('load', function() {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: null,
+        }
+      }).then(function(engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function(appRunner) {
+        return appRunner.runApp();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <script src="flutter.js" defer></script>
+
+  <!-- ========================================================= -->
+  <!-- MANUELE ZOOM FIX (WERKT OP ANDROID & IOS)                -->
+  <!-- ========================================================= -->
+
+  <script>
+    (function() {
+
+      // Zoek ALLE Flutter canvassen
+      function findPane() {
+        return (
+          document.getElementById("flt-glass-pane") ||
+          document.querySelector("#flt-glass-pane") ||
+          document.querySelector(".flt-glass-pane") ||
+          document.querySelector(".flt-canvas") ||
+          document.querySelector("flt-glass-pane") ||
+          document.body.querySelector("[id^='flt-']") ||
+          null
+        );
+      }
+
+      let scale = parseFloat(localStorage.getItem("zoomScale") || "1.0");
+
+      function applyScale() {
+        const pane = findPane();
+        if (!pane) return;
+
+        pane.style.transformOrigin = "top left";
+        pane.style.transform = "scale(" + scale + ")";
+      }
+
+      // Blijf proberen tot Flutter canvas geladen is
+      function tryApply() {
+        applyScale();
+        if (!findPane()) {
+          setTimeout(tryApply, 300);
+        }
+      }
+
+      tryApply();
+
+      document.getElementById("zoom-plus").onclick = () => {
+        scale += 0.10;
+        if (scale > 2.0) scale = 2.0;
+        localStorage.setItem("zoomScale", scale);
+        applyScale();
+      };
+
+      document.getElementById("zoom-minus").onclick = () => {
+        scale -= 0.10;
+        if (scale < 0.70) scale = 0.70;
+        localStorage.setItem("zoomScale", scale);
+        applyScale();
+      };
+
+    })();
+  </script>
+
+</body>
+</html>
+
